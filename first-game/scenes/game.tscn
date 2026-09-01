@@ -1,11 +1,9 @@
 [gd_scene format=4 uid="uid://c66f2tiagg1sr"]
 
-[ext_resource type="Script" uid="uid://4krm3782v1po" path="res://test/test_player.gd" id="1_iywne"]
 [ext_resource type="PackedScene" uid="uid://cm5c76urry5wn" path="res://scenes/level_1.tscn" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://hlclfoosa5ks" path="res://assets/sprites/world_tileset.png" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://c2bbhrbmfybko" path="res://scenes/player.tscn" id="4_lbhrr"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("3_lnu2h")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.7038536, -9.687652, 7.89312, -9.862898, 8, 8, -8, 8)
@@ -132,23 +130,33 @@ texture = ExtResource("3_lnu2h")
 3:7/0 = 0
 3:8/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_jcw6o"]
+[sub_resource type="TileSet" id="TileSet_lbhrr"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_lbhrr")
+sources/0 = SubResource("TileSetAtlasSource_lnu2h")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+distance = -1.0760498
 
 [node name="Game" type="Node2D" unique_id=1254030282]
-script = ExtResource("1_iywne")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1860422108]
-position = Vector2(0, -14)
-zoom = Vector2(4, 4)
+[node name="Level 1" parent="." unique_id=566023175 instance=ExtResource("2_yqjtg")]
 
-[node name="Level 1" parent="." unique_id=1468951379 instance=ExtResource("2_yqjtg")]
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Level 1" unique_id=1152165515]
+[node name="TileMapLayer2" type="TileMapLayer" parent="Level 1" unique_id=262345831]
 position = Vector2(0, 3)
 tile_map_data = PackedByteArray("AAD9/wIAAAAAAAEAAAABAAMAAAAAAAEAAAD//wMAAAAAAAEAAAD+/wMAAAABAAAAAAACAAIAAAABAAEAAAACAAMAAAAAAAEAAAADAAMAAAABAAAAAAADAAIAAAAAAAEAAAAEAAEAAAABAAAAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAFAAMAAAAAAAEAAAAGAAMAAAAAAAEAAAAHAAMAAAAAAAEAAAAIAAMAAAAAAAEAAAAIAAIAAAAAAAEAAAAHAAEAAAAAAAEAAAAHAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAAGAAEAAAAAAAEAAAAFAAEAAAAAAAEAAAAFAAIAAAAAAAEAAAAGAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAIAAEAAAAAAAEAAAD7/wEAAAABAAEAAAD6/wEAAAABAAAAAAD5/wEAAAAAAAEAAAD4/wEAAAAAAAEAAAD3/wEAAAAAAAEAAAD3/wIAAAAAAAEAAAD4/wIAAAAAAAEAAAD4/wMAAAAAAAEAAAD3/wMAAAAAAAEAAAD5/wMAAAAAAAEAAAD6/wMAAAAAAAEAAAD7/wMAAAAAAAEAAAD8/wMAAAAAAAEAAAD8/wIAAAABAAEAAAD7/wIAAAAAAAEAAAD6/wIAAAAAAAEAAAD5/wIAAAAAAAEAAAD3/wAAAAAAAAEAAAD3////AAAAAAEAAAD4/wAAAAAAAAEAAAD5/wAAAAAAAAEAAAD6/wAAAAAAAAEAAAD7/wAAAAABAAAAAAD6////AAAAAAAAAAD5////AAAAAAAAAAD4////AAAAAAEAAAD4//7/AAAAAAEAAAD4//3/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAEAAAAIAP//AAAAAAEAAAAHAP//AAAAAAEAAAAGAP//AAAAAAAAAAAIAP7/AAAAAAEAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAAAAP//AAAAAAAAAAAIAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAFAAAAAAABAAAAAAD9/wMAAAABAAEAAAD3//z/AAABAAMAAAAGAP7/AAABAAUAAAAAAAMAAAABAAEAAAA=")
-tile_set = SubResource("TileSet_jcw6o")
+tile_set = SubResource("TileSet_lbhrr")
 
-[node name="Player" parent="Level 1" unique_id=641033437 instance=ExtResource("4_lbhrr")]
-position = Vector2(10, 11)
+[node name="Bottom Boundary" type="StaticBody2D" parent="." unique_id=1498368423]
+position = Vector2(0, 69)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Boundary" unique_id=77622643]
+position = Vector2(0, 45)
+shape = SubResource("WorldBoundaryShape2D_yqjtg")
+
+[node name="Left Boundary3" type="StaticBody2D" parent="." unique_id=943557137]
+position = Vector2(-1.0000153, -125)
+rotation = 1.5723232
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Boundary3" unique_id=693196155]
+position = Vector2(96.21824, 142.85326)
+shape = SubResource("WorldBoundaryShape2D_yqjtg")

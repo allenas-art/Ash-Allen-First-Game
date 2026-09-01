@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2bbhrbmfybko"]
 
-[ext_resource type="Script" uid="uid://bhqlgaeisqull" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://4krm3782v1po" path="res://test/test_player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dvfn8modq5ptn" path="res://assets/sprites/knight.png" id="2_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jcw6o"]
@@ -42,18 +42,20 @@ animations = [{
 "speed": 7.0
 }]
 
-[node name="Player" type="Node2D" unique_id=665688462]
-position = Vector2(23, -25)
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1172523927]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=142451740]
 script = ExtResource("1_g2els")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1845605933]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=5452229]
 position = Vector2(-23, 17)
 shape = SubResource("CircleShape2D_jcw6o")
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1316938763]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1334083071]
 position = Vector2(-23, 13)
 sprite_frames = SubResource("SpriteFrames_bxyv0")
 autoplay = "default"
-frame_progress = 0.3258851
+frame = 3
+frame_progress = 0.99913806
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1244517436]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
