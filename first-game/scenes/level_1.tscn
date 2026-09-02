@@ -142,3 +142,4 @@ tile_map_data = PackedByteArray("AAD9/wIAAAAAAAEAAAABAAMAAAAAAAEAAAD//wMAAAAAAAE
 tile_set = SubResource("TileSet_4nkto")
 
 [node name="CharacterBody2D" parent="." unique_id=142451740 instance=ExtResource("2_bswci")]
+position = Vector2(2, -665.99994)

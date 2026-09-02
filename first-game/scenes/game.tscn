@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c66f2tiagg1sr"]
 
 [ext_resource type="PackedScene" uid="uid://cm5c76urry5wn" path="res://scenes/level_1.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dqa01xdajdmpt" path="res://scenes/platform.tscn" id="3_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://hlclfoosa5ks" path="res://assets/sprites/world_tileset.png" id="3_lnu2h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
@@ -137,12 +138,50 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
 distance = -1.0760498
 
+[sub_resource type="Animation" id="Animation_lnu2h"]
+length = 1.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(166.00002, -38)]
+}
+
+[sub_resource type="Animation" id="Animation_lbhrr"]
+resource_name = "move"
+length = 0.6333333
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(166.00002, -562), Vector2(166.00002, 122)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iywne"]
+_data = {
+&"RESET": SubResource("Animation_lnu2h"),
+&"move": SubResource("Animation_lbhrr")
+}
+
 [node name="Game" type="Node2D" unique_id=1254030282]
 
 [node name="Level 1" parent="." unique_id=566023175 instance=ExtResource("2_yqjtg")]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="Level 1" unique_id=262345831]
-position = Vector2(0, 3)
+position = Vector2(0, 2)
 tile_map_data = PackedByteArray("AAD9/wIAAAAAAAEAAAABAAMAAAAAAAEAAAD//wMAAAAAAAEAAAD+/wMAAAABAAAAAAACAAIAAAABAAEAAAACAAMAAAAAAAEAAAADAAMAAAABAAAAAAADAAIAAAAAAAEAAAAEAAEAAAABAAAAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAFAAMAAAAAAAEAAAAGAAMAAAAAAAEAAAAHAAMAAAAAAAEAAAAIAAMAAAAAAAEAAAAIAAIAAAAAAAEAAAAHAAEAAAAAAAEAAAAHAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAAGAAEAAAAAAAEAAAAFAAEAAAAAAAEAAAAFAAIAAAAAAAEAAAAGAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAIAAEAAAAAAAEAAAD7/wEAAAABAAEAAAD6/wEAAAABAAAAAAD5/wEAAAAAAAEAAAD4/wEAAAAAAAEAAAD3/wEAAAAAAAEAAAD3/wIAAAAAAAEAAAD4/wIAAAAAAAEAAAD4/wMAAAAAAAEAAAD3/wMAAAAAAAEAAAD5/wMAAAAAAAEAAAD6/wMAAAAAAAEAAAD7/wMAAAAAAAEAAAD8/wMAAAAAAAEAAAD8/wIAAAABAAEAAAD7/wIAAAAAAAEAAAD6/wIAAAAAAAEAAAD5/wIAAAAAAAEAAAD3/wAAAAAAAAEAAAD3////AAAAAAEAAAD4/wAAAAAAAAEAAAD5/wAAAAAAAAEAAAD6/wAAAAAAAAEAAAD7/wAAAAABAAAAAAD6////AAAAAAAAAAD5////AAAAAAAAAAD4////AAAAAAEAAAD4//7/AAAAAAEAAAD4//3/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAEAAAAIAP//AAAAAAEAAAAHAP//AAAAAAEAAAAGAP//AAAAAAAAAAAIAP7/AAAAAAEAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAAAAP//AAAAAAAAAAAIAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAFAAAAAAABAAAAAAD9/wMAAAABAAEAAAD3//z/AAABAAMAAAAGAP7/AAABAAUAAAAAAAMAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_lbhrr")
 
@@ -160,3 +199,10 @@ rotation = 1.5723232
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Boundary3" unique_id=693196155]
 position = Vector2(96.21824, 142.85326)
 shape = SubResource("WorldBoundaryShape2D_yqjtg")
+
+[node name="Platform" parent="." unique_id=1379462332 instance=ExtResource("3_lbhrr")]
+position = Vector2(166.00002, -38)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform" unique_id=2073361825]
+libraries/ = SubResource("AnimationLibrary_iywne")
+autoplay = &"move"
