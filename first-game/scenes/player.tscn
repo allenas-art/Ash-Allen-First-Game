@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c2bbhrbmfybko"]
 
-[ext_resource type="Script" uid="uid://4krm3782v1po" path="res://test/test_player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://vjcslsv21g6e" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dvfn8modq5ptn" path="res://assets/sprites/knight.png" id="2_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jcw6o"]
@@ -261,7 +261,7 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Roll",
-"speed": 4.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -364,11 +364,12 @@ scale = Vector2(1.006375, 1.291263)
 shape = SubResource("CircleShape2D_jcw6o")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1334083071]
-position = Vector2(2.9206603e-07, 7.5951436e-07)
+position = Vector2(-1.1348459e-05, 3.0742667e-06)
 scale = Vector2(1.0006735, 0.97413385)
 sprite_frames = SubResource("SpriteFrames_bxyv0")
 animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.6154
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1244517436]
 zoom = Vector2(3, 3)
