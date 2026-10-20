@@ -209,5 +209,5 @@ libraries/ = SubResource("AnimationLibrary_iywne")
 autoplay = &"Move"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1255617626]
-position = Vector2(-4, -889)
+position = Vector2(-3, -890)
 zoom = Vector2(0.1, 0.1)
